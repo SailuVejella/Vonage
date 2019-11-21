@@ -74,7 +74,7 @@ form.addEventListener('submit', function submit(event) {
 });
     //get the Image data
     var imgData = publisher.getImgdata();
-    ession.on('archiveStarted', function archiveStarted(event) {
+    session.on('archiveStarted', function archiveStarted(event) {
       archiveID = event.id;
       console.log('Archive started ' + archiveID);
       $('#stop').show();
@@ -89,7 +89,7 @@ form.addEventListener('submit', function submit(event) {
       $('#view').show();
     });
     // Start recording
-    function startArchive() { // eslint-disable-line no-unused-vars
+     function startArchive() { // eslint-disable-line no-unused-vars
       $.ajax({
         url: SAMPLE_SERVER_BASE_URL + '/archive/start',
         type: 'POST',
@@ -133,5 +133,14 @@ form.addEventListener('submit', function submit(event) {
     
     $('#start').show();
     $('#view').hide();
+    $("#start").on("click", function(){
+      startArchive();
+    })
+    $("#stop").on("click", function(){
+      stopArchive();
+    })
+    $("#view").on("click", function(){
+      viewArchive();
+    })
 
 }
